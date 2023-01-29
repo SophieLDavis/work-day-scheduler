@@ -1,28 +1,57 @@
 //2. Each timeblock need to have the time, textarea, and save button -->
-//3. Style each blocks -->
+//$('.container').append()
+//equivalent to event.target.getAttribute("data-hour")
+//console.log($( "div" ).data("hour").attr());
+//console.log(jQuery.data(document.body, 'hour'))
+var time = parseInt($('.data-hour'))
+var amPm = moment().format('A');
+timeAmPm= time + amPm
+$('.timeblock').append('<div class="hour"></div>').text(timeAmPm);// error 
+
+
+// div2 user text input area/ form input - event listener 
+$('.timeblock').append('<textarea ></textarea>').on('submit', function(event){
+    //style text area to be longer?
+    //preventDefault;
+});
+
+//$('.timeblock')
+//div 3 save button
+$('.timeblock').append('<button class="saveBtn"></button>');
+//add icon ? <i class="fa-solid fa-floppy-disk"></i>
+
 
 // Show the current date at the top
-$('#currentDay').text(moment().format('HH MMMM Y HH:mm'))
+$('#currentDay').text(moment().format('HH MMMM Y HH:mm'));
 
 // Colour code each block based on the current time
-//      Create variables to target each time block
-//      In the html add the data-hour which represent which hour each element is
-//      Create variable for moment().format('H') (0 - 23) e.g. thisHour
-//      timeblocks = $('.timeblock')
-//      timeblocks.each(function() {
-//          var hour = $(this).attr('data-hour');
-//          Note that `hour` and `thisHour` should be an integer, to make sure it is, you can do something like
-//          hour = parseInt(hour, 10)
-//          thisHour = parseInt(thisHour, 10)
-//
-//          if (hour < thisHour) {
-//              $(this).css('background-color', pastColour)
-//          } else if (hour == thisHour) {
-//              $(this).css('background-color', presentColour)
-//          } else {
-//              $(this).css('background-color', futureColour)
-//          }
-//      })
+// Create variables to target each time block
+
+//Create variable for moment().format('H') (0 - 23) e.g. thisHour
+var thisHour= moment().format('H');
+var timeblocks = $('.timeblock');
+//what does .each do?   iterates over the element and returns it when this is used. 
+
+timeblocks.each(function() {
+//selects 'data-hour' as whatever is set to hour
+var hour = $(this).attr('data-hour');
+//`hour` and `thisHour` should be an integer:
+hour = parseInt(hour, 10)
+thisHour = parseInt(thisHour, 10)
+
+//set colours for time
+var past= $('.past')
+var present=$('.present')
+var future= $('.future')
+
+if (hour < thisHour) {
+$(this).css('background-color', past)
+} else if (hour == thisHour) {
+$(this).css('background-color', present)
+} else {
+$(this).css('background-color', future)
+}
+})
 
 
 // 3. Save input to local storage
@@ -62,3 +91,4 @@ $('#currentDay').text(moment().format('HH MMMM Y HH:mm'))
 //      if theres no data in local storage, do nothing
 
 // Extra, add hover effect on the save button
+
