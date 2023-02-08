@@ -1,18 +1,18 @@
 // Show the current date at the top
 $('#currentDay').text(moment().format('dddd DD MMMM Y HH:mm'));
 
+//add icon to button
+$('.saveBtn').append('<i class="fa fa-lock" style= "font-size: 25px;"></i>');
+
 var thisHour= moment().hours();
 var timeblocks = $('.timeblock');
 //var hour = $(this).attr('data-hour');
 thisHour = parseInt(thisHour, 10)
-console.log("thisHour", thisHour)
 
 var description= $('.description')
 
 description.each(function() {
     var hour = parseInt($(this).parent().attr('data-hour'), 10);
-    console.log(hour)
-    console.log(thisHour)
     if (hour < thisHour) {
         $(this).addClass('past')
         console.log('past')

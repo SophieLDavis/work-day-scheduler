@@ -68,12 +68,12 @@ textarea {
   border-bottom-right-radius: 15px;
   background-color: #06aed5;
   color: white;
-  height: 55px;
-  width:55px;
+  height: 100px;
+  width:100px;
+  position: absolute;
 }
 
 .saveBtn i:hover {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
-
