@@ -1,18 +1,30 @@
 // Show the current date at the top
 $('#currentDay').text(moment().format('dddd DD MMMM Y HH:mm'));
 
+//add icon 
+//$('.saveBtn').append('<i class="fa fa-lock"></i>');
+
+// Colour code each block based on the current time
+// Create variables to target each time block
+//Create variable for moment().format('H') (0 - 23) e.g. thisHour
 var thisHour= moment().hours();
 var timeblocks = $('.timeblock');
 //var hour = $(this).attr('data-hour');
+timeblocks.each(function() {
+//selects 'data-hour' as whatever is set to hour
+
+//`hour` and `thisHour` should be an integer:
+//console.log("hour", hour)
+// hour = parseInt(hour, 10)
+// console.log("hour", hour)
 thisHour = parseInt(thisHour, 10)
 console.log("thisHour", thisHour)
 
 var description= $('.description')
 
 description.each(function() {
-    var hour = parseInt($(this).parent().attr('data-hour'), 10);
+    var hour = $(this).parent().attr('data-hour');
     console.log(hour)
-    console.log(thisHour)
     if (hour < thisHour) {
         $(this).addClass('past')
         console.log('past')
@@ -25,7 +37,7 @@ description.each(function() {
         }
          })
         
-
+})
 
 // 3. Save input to local storage
 
